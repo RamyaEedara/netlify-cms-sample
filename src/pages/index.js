@@ -1,7 +1,9 @@
-import React from "react"
+import React from 'react'
+import Link from 'gatsby-link'
 
-export default () => <div>
-<form name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+const IndexPage = () => (
+  <div>
+<form name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" data-netlify-recaptcha="true">
   <p>
     <label>Your Name: <input type="text" name="name" /></label>   
   </p>
@@ -13,8 +15,10 @@ export default () => <div>
   </p>
   <div data-netlify-recaptcha="true"></div>
   <p>
-    <button type="submit" to="/thankPage/">Send</button>
+    <button type="submit" to="/thankYouPage/" >Send</button>
   </p>
 </form>
 </div>
+)
 
+export default IndexPage
