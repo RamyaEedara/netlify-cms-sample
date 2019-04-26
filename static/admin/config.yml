@@ -1,17 +1,42 @@
 backend:
-  name: github
-  repo: RamyaEedara/netlify-cms-sample
+  name: git-gateway
+  branch: master
 
-media_folder: static/assets
-public_folder: assets
+media_folder: "static/uploads"
+public_folder: "uploads"
 
 collections:
-  - name: blog
-    label: Blog
-    folder: blog
+  - name: "Prudential"
+    label: "Pebble" 
+    folder: "content/post"
     create: true
+    slug: "{{year}}-{{slug}}"
     fields:
-      - { name: path, label: Path }
-      - { name: date, label: Date, widget: date }
-      - { name: title, label: Title }
-      - { name: body, label: Body, widget: markdown }
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "date"}
+      - {label: "Draft", name: "draft", widget: "boolean", default: true}
+      - {label: "Categories", name: "categories", widget: "hidden", default: "Podcast"}
+      - {label: "Tags", name: "tags", widget: "list", required: false}
+      - {label: Author, name: author, widget: hidden, default: Chris Stayte}
+      - {label: Author Image, name: authorImage, widget: hidden, default: ""}
+      - {label: "Header Image", name: image, widget: image, required: false}
+      - {label: Commenting, name: comments, widget: boolean, default: true}
+      - {label: Sharing, name: share, widget: boolean, default: true}
+      - {label: Type, name: type, widget: hidden, default: "post"}
+      - {label: "Body", name: "body", widget: "markdown"}
+  - name: "pages"
+    label: "Pages"
+    files:
+      - file: "content/pages"
+        label: "Landing Page"
+        name: "index"
+        fields:
+          - {label: Title, name: title, widget: string}
+          - {label: Image, name: image, widget: image}
+          - {label: Heading, name: heading, widget: string}
+          - {label: Subheading, name: subheading, widget: string}
+          - {label: MainSection, name: MainSection, widget: object, fields: [{label: Title, name: title, widget: string}, {label: Description, name: description, widget: text}]}
+          - {label: Description, name: description, widget: string}
+          - {label: Intro, name: intro, widget: object, fields: [{label: Heading, name: heading, widget: string}, {label: Description, name: description, widget: text}, {label: Blurbs, name: blurbs, widget: list, fields: [{label: Image, name: image, widget: image}, {label: Text, name: text, widget: text}]}]}
+          - {label: Main, name: main, widget: object, fields: [{label: Heading, name: heading, widget: string}, {label: Description, name: description, widget: text}, {label: Image1, name: image1, widget: object, fields: [{label: Image, name: image, widget: image}, {label: Alt, name: alt, widget: string}]}, {label: Image2, name: image2, widget: object, fields: [{label: Image, name: image, widget: image}, {label: Alt, name: alt, widget: string}]}, {label: Image3, name: image3, widget: object, fields: [{label: Image, name: image, widget: image}, {label: Alt, name: alt, widget: string}]}]}
+      
